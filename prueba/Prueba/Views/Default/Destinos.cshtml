@@ -1,0 +1,163 @@
+﻿@{
+
+    Layout = null;
+
+}
+
+@model List<Prueba.Models.Destino>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title> Formulario de Acceso </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Login web</title>
+    <!-- Etiqueta style con todo lo que llevaria el css -->
+    <style type="text/css">
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            margin: 150px 200px 150px 200px;
+            background: #081b29;
+            align-content: center;
+            display: grid;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        header {
+            background-color: #081b29;
+            color: #fff;
+            padding: 10px 0;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .wrapper {
+            position: relative;
+            grid-template-columns: 1fr 1fr;
+            border: 3px solid #00ffff;
+            box-shadow: 0 0 50px 0 #00a6bc;
+        }
+
+
+        main {
+            background-color: #fff;
+            padding: 20px;
+        }
+
+        h2 {
+            font-size: 24px;
+        }
+
+        .accordion {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .accordion-btn {
+            background-color: #000000;
+            color: #fff;
+            border: none;
+            text-align: center;
+            font-size: larger;
+            padding: 15px;
+            width: 100%;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+            .accordion-btn:hover {
+                background-color: #fff;
+            }
+
+        .panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out;
+        }
+    </style>
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="container">
+
+                <h1>Agencia de Viajes</h1>
+                <div class="user-info">
+                    <p>Bienvenido, [Nombre de Usuario]</p>
+                    <a href="~/Default/Index" style="color:#ffffff">Iniciar sesión</a>
+                    <a href="/Default/Index" style="color:#ffffff">Cerrar Sesión</a>
+                </div>
+            </div>
+
+        </header>
+
+        <main>
+            <div class="container">
+                <h2>Menú</h2>
+                <div class="accordion">
+                    <button class="accordion-btn">¿Dondé voy?</button>
+                    <div class="panel">
+                        <br />
+                        <ul>
+                            @foreach (var destino in Model)
+                            {
+                                <li>@destino.Nombre - @destino.Ubicacion</li>
+                            }
+                        </ul>
+                        <p></p>
+
+                    </div>
+
+                    <button class="accordion-btn">Destinos Aleatorios</button>
+                    <div class="panel">
+                        <p>Información.</p>
+                        <a href="Destinos.html">Aquí puede encontrar algunos destinos deseados</a>
+                        <ul>
+                           
+                        </ul>
+                    </div>
+
+                    <button class="accordion-btn">Ultimas Busquedas</button>
+                    <div class="panel">
+                        <p>Información.</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </main>
+
+
+        <script>
+            const accordionBtns = document.querySelectorAll('.accordion-btn');
+            accordionBtns.forEach(btn => {
+                btn.addEventListener('mouseover', function () {
+                    this.classList.toggle('active');
+                    const panel = this.nextElementSibling;
+                    if (panel.style.maxHeight) {
+                        panel.style.maxHeight = null;
+                    } else {
+                        panel.style.maxHeight = panel.scrollHeight + 'px';
+                    }
+                });
+            });
+        </script>
+    </div>
+</body>
+
+</html>

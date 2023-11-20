@@ -1,0 +1,180 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@{
+    Layout = null;
+}
+
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title> Formulario de Acceso </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Login web</title>
+    <link href="cl-icon/css/all.min.css" rel="stylesheet" />
+    <!-- Link hacia el archivo de estilos css -->
+    <style type="text/css">
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Arial;
+            color: #fff;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            background: #081b29;
+            display: grid;
+            justify-content: center;
+            align-content: center;
+        }
+
+        ::-webkit-input-placeholder {
+            color: #eee;
+        }
+
+        .wrapper {
+            position: relative;
+            width: 800px;
+            height: 65vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border: 3px solid #00ffff;
+            box-shadow: 0 0 50px 0 #00a6bc;
+        }
+
+        .banner {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 450px;
+            height: 100%;
+            background: linear-gradient(to right, #0ef, c#800ff);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 60% 100%);
+            padding-right: 70px;
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .tittle {
+            font-size: 35px;
+        }
+
+        .inp {
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .input {
+            border: none;
+            outline: none;
+            background: none;
+            width: 260px;
+            margin-top: 40px;
+            padding-right: 10px;
+            font-size: 17px;
+            color: #0ef;
+        }
+
+
+        .wel_text {
+            font-size: 40px;
+            margin-top: -50px;
+            line-height: 50px;
+        }
+
+        .para {
+            margin-top: 10px;
+            font-size: 18px;
+            line-height: 24px;
+            letter-spacing: 1px;
+        }
+
+        .submit {
+            border: none;
+            outline: none;
+            width: 288px;
+            margin-top: 25px;
+            padding: 10px 0;
+            font-size: 20px;
+            border-radius: 40px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            background: linear-gradient(45deg, #0ef, #c800ff);
+        }
+
+
+        .footer {
+            margin-top: 30px;
+            letter-spacing: 0.5px;
+            font-size: 14px;
+        }
+    </style>
+    <script>
+        const usuarios = [{ usuario: "Diego", contrasena: "1234" }];
+
+        function ir() {
+            var usuarioIngresado = document.getElementById('loginform').elements['login'].value;
+            var contrasenaIngresada = document.getElementById('loginform').elements['password'].value;
+
+
+            var usuarioEncontrado = usuarios.find(function (user) {
+                return user.usuario === usuarioIngresado && user.contrasena === contrasenaIngresada;
+            });
+
+            if (usuarioEncontrado) {
+                alert("Usuario y contraseña ingresados correctamente");
+                window.location.href = "Destinos";
+            } else {
+                alert("El usuario o contraseña son incorrectos.");
+            }
+        }
+    </script>
+
+</head>
+<body>
+    <div class="wrapper">
+        <form action="" class="form" id="loginform">
+            <h1 class="tittle">Inicio</h1>
+            <div class="inp">
+                <input type="text" name="login" id="" class="input" placeholder="Usuario" />
+                <i class="fa-solid fa-solid-user"></i>
+            </div>
+            <div class="inp">
+                <input type="password" name="password" id="" class="input" placeholder="Contraseña" />
+                <i class="fa-solid fa-lock"></i>
+            </div>
+            <input onclick="ir()" type="button" class="submit" value="Iniciar sesión">
+            <p class="footer">¿No recuerdas tu usuario?</p>
+        </form>
+
+        <div class="banner">
+            <h1 class="wel_text">Bienvenidos<br /></h1>
+            <p class="para">Agencia de viajes<br />Login</p>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
